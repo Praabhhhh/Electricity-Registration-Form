@@ -12,9 +12,12 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("ReactPolicy", policy =>
     {
-        policy.WithOrigins("http://localhost:5173")
-              .AllowAnyHeader()
-              .AllowAnyMethod();
+       policy.WithOrigins(
+    "http://localhost:5173",
+    "https://electricity-registration-form-1.onrender.com"
+)
+.AllowAnyHeader()
+.AllowAnyMethod();
     });
 });
 
