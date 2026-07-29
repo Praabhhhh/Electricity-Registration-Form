@@ -1,0 +1,17 @@
+# React
+RegistrationForm/node_modules
+RegistrationForm/dist
+
+# ASP.NET
+ElectricityAPI/bin
+ElectricityAPI/obj
+ElectricityAPI/wwwroot/uploads/
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# Environment files
+.env
