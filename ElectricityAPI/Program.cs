@@ -45,12 +45,12 @@ builder.Services.AddScoped<IRegistrationService, RegistrationService>();
 var app = builder.Build();
 
 
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+// using (var scope = app.Services.CreateScope())
+// {
+//     var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
-    db.Database.Migrate();
-}
+//     db.Database.Migrate();
+// }
 
 // Swagger
 if (app.Environment.IsDevelopment())
