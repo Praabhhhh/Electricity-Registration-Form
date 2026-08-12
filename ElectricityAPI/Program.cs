@@ -12,7 +12,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend", policy =>
     {
         policy
-            .AllowAnyOrigin()
+            .SetIsOriginAllowed(origin => true)
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
@@ -52,6 +52,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<IRegistrationService, RegistrationService>();
 
 var app = builder.Build();
+app.UseCors("AllowFrontend");
 
 
 // using (var scope = app.Services.CreateScope())
@@ -71,7 +72,7 @@ if (app.Environment.IsDevelopment())
 // app.UseHttpsRedirection();
 
 // app.UseCors("ReactPolicy");
-app.UseCors("AllowFrontend");
+
 
 // Static Files (wwwroot/uploads)
 app.UseStaticFiles();
