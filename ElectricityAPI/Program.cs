@@ -7,20 +7,29 @@ var builder = WebApplication.CreateBuilder(args);
 // Add Controllers
 builder.Services.AddControllers();
 
-
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("ReactPolicy", policy =>
+    options.AddPolicy("AllowFrontend", policy =>
     {
         policy
-            .WithOrigins(
-                "http://localhost:5173",
-                "https://electricity-registration-form-1.onrender.com"
-            )
+            .AllowAnyOrigin()
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
 });
+// builder.Services.AddCors(options =>
+// {
+//     options.AddPolicy("ReactPolicy", policy =>
+//     {
+//         policy
+//             .WithOrigins(
+//                 "http://localhost:5173",
+//                 "https://electricity-registration-form-1.onrender.com"
+//             )
+//             .AllowAnyHeader()
+//             .AllowAnyMethod();
+//     });
+// });
 
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
@@ -61,7 +70,8 @@ if (app.Environment.IsDevelopment())
 
 // app.UseHttpsRedirection();
 
-app.UseCors("ReactPolicy");
+// app.UseCors("ReactPolicy");
+app.UseCors("AllowFrontend");
 
 // Static Files (wwwroot/uploads)
 app.UseStaticFiles();
